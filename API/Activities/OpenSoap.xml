@@ -1,0 +1,18 @@
+<con:conRequest xsi:type="con:WsdlRequest" xmlns:con="http://eviware.com/soapui/config">
+  <con:name>SampleSOAPRequest</con:name>
+  <con:restRequest>false</con:restRequest>
+  <con:method>POST</con:method>
+  <con:endpoint>http://www.example.com/soap-service</con:endpoint>
+  <con:request>
+    <![CDATA[
+      <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:exa="http://example.com/">
+         <soapenv:Header/>
+         <soapenv:Body>
+            <exa:GetData>
+               <exa:Param1>Value</exa:Param1>
+            </exa:GetData>
+         </soapenv:Body>
+      </soapenv:Envelope>
+    ]]>
+  </con:request>
+</con:conRequest>

@@ -1,0 +1,4 @@
+<con:dataSource type="Excel" xsi:type="con:ExcelDataSource" xmlns:con="http://eviware.com/soapui/config">
+  <con:file>users.xlsx</con:file>
+  <con:sheetName>Sheet1</con:sheetName>
+</con:dataSource>

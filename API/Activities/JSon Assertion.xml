@@ -1,0 +1,7 @@
+<con:assertion type="JSON_PATH" xsi:type="con:JsonPathContainsAssertion" xmlns:con="http://eviware.com/soapui/config">
+  <con:name>JSONPath Assertion</con:name>
+  <con:configuration>
+    <con:expression>$.username</con:expression>
+    <con:expectedValue>testuser</con:expectedValue>
+  </con:configuration>
+</con:assertion>

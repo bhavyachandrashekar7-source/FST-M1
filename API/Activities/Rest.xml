@@ -1,0 +1,6 @@
+<con:restRequest xsi:type="con:RestRequest" xmlns:con="http://eviware.com/soapui/config">
+  <con:name>GetUsers</con:name>
+  <con:method>GET</con:method>
+  <con:resourcePath>/users</con:resourcePath>
+  <con:request></con:request>
+</con:restRequest>

@@ -1,0 +1,8 @@
+<con:jDBCRequest xsi:type="con:JDBCRequest" xmlns:con="http://eviware.com/soapui/config">
+  <con:name>JDBC Query</con:name>
+  <con:connectionString>jdbc:mysql://localhost:3306/mydb</con:connectionString>
+  <con:driverClass>com.mysql.jdbc.Driver</con:driverClass>
+  <con:username>dbuser</con:username>
+  <con:password>dbpassword</con:password>
+  <con:query>SELECT * FROM users WHERE username='testuser'</con:query>
+</con:jDBCRequest>

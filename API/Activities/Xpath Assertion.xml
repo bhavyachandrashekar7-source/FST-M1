@@ -1,0 +1,6 @@
+<con:assertion type="XPATH" xsi:type="con:XPathContainsAssertion" xmlns:con="http://eviware.com/soapui/config">
+  <con:name>XPath Assertion</con:name>
+  <con:configuration>
+    <con:xpath>//username[text()='testuser']</con:xpath>
+  </con:configuration>
+</con:assertion>

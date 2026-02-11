@@ -1,0 +1,4 @@
+<con:dataSource type="File" xsi:type="con:FileDataSource" xmlns:con="http://eviware.com/soapui/config">
+  <con:file>users.txt</con:file>
+  <con:delimiter>,</con:delimiter>
+</con:dataSource>
