@@ -1,47 +1,60 @@
+package Activities;
 
-import java.util.ArrayList;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import io.appium.java_client.AppiumBy;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.options.UiAutomator2Options;
+import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 
 public class Activity1 {
-    // Test fixtures
-    static ArrayList<String> list;
+// Driver Declaration
+AndroidDriver driver;
 
-    // Initialize test fixtures before each test method
-    @BeforeEach
-    void setUp() throws Exception {
-        list = new ArrayList<String>();
-        list.add("alpha"); // at index 0
-        list.add("beta"); // at index 1
-    }
+// Set up method
+@BeforeClass
+public void setUp() throws MalformedURLException, URISyntaxException {
+    // Desired Capabilities
+    UiAutomator2Options options = new UiAutomator2Options();
+    options.setPlatformName("android");
+    options.setAutomationName("UiAutomator2");
+    options.setApp("path/to/calculator.apk");
+    options.noReset();
 
-    // Test method to test the insert operation
-    @Test
-    public void insertTest() {
-        // Assertion for size
-        assertEquals(2, list.size(), "Wrong size");
-        // Add new element
-        list.add(2, "charlie");
-        // Assert with new elements
-        assertEquals(3, list.size(), "Wrong size");
+    // Server Address
+    URL serverURL = new URI("http://localhost:4723").toURL();
 
-        // Assert individual elements
-        assertEquals("alpha", list.get(0), "Wrong element");
-        assertEquals("beta", list.get(1), "Wrong element");
-        assertEquals("charlie", list.get(2), "Wrong element");
-    }
+    // Driver Initialization
+    driver = new AndroidDriver(serverURL, options);
+}
 
-    // Test method to test the replace operation
-    @Test
-    public void replaceTest() {
-        // Replace new element
-        list.set(1, "charlie");
+// Test method
+@Test
+public void multiplyTest() {
+    // Perform the calculation
+    driver.findElement(AppiumBy.id("digit_5")).click();
+    driver.findElement(AppiumBy.accessibilityId("multiply")).click();
+    driver.findElement(AppiumBy.id("digit_8")).click();
+    driver.findElement(AppiumBy.accessibilityId("equals")).click();
 
-        // Assert size of list
-        assertEquals(2, list.size(), "Wrong size");
-        // Assert individual elements
-        assertEquals("alpha", list.get(0), "Wrong element");
-        assertEquals("charlie", list.get(1), "Wrong element");
-    }
+    // Find the result
+    String result = driver.findElement(AppiumBy.id("result_final")).getText();
+
+    // Assertion
+    Assert.assertEquals(result, "40");
+}
+
+
+// Tear down method
+@AfterClass
+public void tearDown() {
+    // Close the app
+    driver.quit();
+}
 }
